@@ -4,6 +4,9 @@ import static br.juste.utils.DataUtils.adicionarDias;
 
 import java.util.Date;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import br.juste.entidades.Filme;
 import br.juste.entidades.Locacao;
 import br.juste.entidades.Usuario;
@@ -29,7 +32,9 @@ public class LocacaoService {
 		return locacao;
 	}
 
-	public static void main(String[] args) {
+	
+	@Test
+	public void teste() {
 		
 		//cenário
 		LocacaoService service = new LocacaoService();
@@ -39,13 +44,10 @@ public class LocacaoService {
 		//ação
 		Locacao locacao =  service.alugarFilme(usuario, filme);
 		
-		//verificação
-		System.out.println(locacao.getValor());
-		System.out.println(locacao.getValor() == 5.0);
-		System.out.println(locacao.getDataLocacao());
-		System.out.println(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
-		System.out.println(locacao.getDataRetorno());
-		System.out.println(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
+		//verificação		
+		Assert.assertTrue(locacao.getValor() == 5.0); // para testar erro, colocar valor == 4.0	
+		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));		
+		Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 		
 	}
 }
