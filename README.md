@@ -1,5 +1,4 @@
-# unitary_tests
-Testes Unitários Java
+# Testes Unitários Java
 
 TestRunner
 
